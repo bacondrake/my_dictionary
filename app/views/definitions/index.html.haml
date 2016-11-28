@@ -1,0 +1,25 @@
+%p#notice= notice
+.row
+  .col-md-offset-1
+    .col-md-10
+      %h1 Definitions
+
+      %table.table.table-hover
+        %thead
+          %tr
+            %th Word
+            %th Meaning
+            %th Sample
+            %th Comments
+            %th{:colspan => "2"}
+        %tbody
+          - @definitions.each do |definition|
+            %tr
+              %td= definition.word
+              %td= definition.meaning
+              %td= definition.sample
+              %td= definition.comments
+              %td= link_to 'Edit', edit_definition_path(definition), class: 'btn btn-info btn-sm'
+              %td= link_to 'Destroy', definition, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
+      %br/
+      = link_to 'New Definition', new_definition_path, class: 'btn btn-primary btn-sm'

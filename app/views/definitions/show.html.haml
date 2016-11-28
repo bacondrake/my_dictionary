@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %strong Word:
+  = @definition.word
+%p
+  %strong Meaning:
+  = @definition.meaning
+%p
+  %strong Sample:
+  = @definition.sample
+%p
+  %strong Comments:
+  = @definition.comments
+= link_to 'Edit', edit_definition_path(@definition)
+|
+= link_to 'Back', definitions_path
