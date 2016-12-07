@@ -1,9 +1,8 @@
-%p#notice= notice
+/ %p#notice= notice
 .row
   .col-md-offset-1
     .col-md-10
       %h1 Definitions
-
       %table.table.table-hover
         %thead
           %tr
@@ -14,12 +13,13 @@
             %th{:colspan => "2"}
         %tbody
           - @definitions.each do |definition|
-            %tr
+            / Give the tr an id of 'definition_1' so that the remote js can find the right definition and remove it
+            %tr{:id => dom_id(definition)}
               %td= definition.word
               %td= definition.meaning
               %td= definition.sample
               %td= definition.comments
               %td= link_to 'Edit', edit_definition_path(definition), class: 'btn btn-info btn-sm'
-              %td= link_to 'Destroy', definition, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
+              %td= link_to 'Delete', definition, method: :delete, remote: true, class: 'btn btn-danger btn-sm' # remote: true makes the delete method a remote one and can use AJAX to remove the item from the page without having to refresh the browser
       %br/
       = link_to 'New Definition', new_definition_path, class: 'btn btn-primary btn-sm'

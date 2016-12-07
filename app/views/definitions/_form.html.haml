@@ -1,23 +1,31 @@
-= form_for(definition) do |f|
-  - if definition.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(definition.errors.count, "error")
-        prohibited this definition from being saved:
-      %ul
-        - definition.errors.full_messages.each do |message|
-          %li= message
-  .field
-    = f.label :word
-    = f.text_area :word
-  .field
-    = f.label :meaning
-    = f.text_area :meaning
-  .field
-    = f.label :sample
-    = f.text_area :sample
-  .field
-    = f.label :comments
-    = f.text_area :comments
-  .actions
-    = f.submit
+.form-horizontal
+  = simple_form_for(definition) do |f|
+    - if definition.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(definition.errors.count, "error")
+          prohibited this definition from being saved:
+        %ul
+          - definition.errors.full_messages.each do |message|
+            %li= message
+    .row
+      .col-md-3
+        = f.label :word
+        %br
+        = f.text_field :word
+      .col-md-9
+        .field.form-group
+          = f.input :meaning, label: "Definition", as: :pagedown
+    .row
+      .col-md-offset-3
+        .col-md-12
+          .field.form-group
+            = f.input :sample, label: "Sample sentence", as: :pagedown, class: 'col-lg-2'
+    .row
+      .col-md-offset-3
+        .col-md-12
+          .field.form-group
+            = f.input :comments, label: "Comments", as: :pagedown, class: 'col-lg-2'
+    .actions
+      = f.submit 'Submit', class: 'btn btn-primary'
+      = link_to 'Back', definitions_path, class: "btn btn-default"

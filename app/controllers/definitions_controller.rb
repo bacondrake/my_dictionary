@@ -18,10 +18,12 @@ class DefinitionsController < ApplicationController
   def create
     @definition = Definition.new(definition_params)
     if @definition.save
-      redirect_to definitions_path, note: "New definition created"
+      redirect_to definitions_path, notice: "New definition created"
     else
       render 'new'
     end
+
+    # format.js
   end
 
   def update
@@ -33,8 +35,12 @@ class DefinitionsController < ApplicationController
   end
 
   def destroy
-    @definition.destroy
-    redirect_to definitions_path, notice: "Definition has been deleted"
+    @definition.destroy    
+
+    respond_to do |format|
+      format.html { redirect_to definitions_path, notice: "Definition has been deleted" }
+      format.js # Allows the controller to accept the Javascript call in destroy.js.haml
+    end
   end
 
   private

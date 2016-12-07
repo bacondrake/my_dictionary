@@ -4,7 +4,15 @@
     %title MyDictionary
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = stylesheet_link_tag 	 'bootswatch'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %link{rel:"stylesheet", href:"//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"}
   %body
+    .row
+      .col-md-offset-1
+        .col-md-10
+          %br
+          - flash.each do |name, msg|
+            = content_tag(:div, class: "alert alert-info") do
+              = msg
+              %span.close.remove{:type => "button"} ×
     = yield
