@@ -2,7 +2,7 @@ require 'test_helper'
 
 class DefinitionsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @definition = definitions(:one)
+    @definition = definitions(:turbid)
   end
 
   test "should get index" do
@@ -20,7 +20,7 @@ class DefinitionsControllerTest < ActionDispatch::IntegrationTest
       post definitions_url, params: { definition: { comments: @definition.comments, meaning: @definition.meaning, sample: @definition.sample, word: @definition.word } }
     end
 
-    assert_redirected_to definition_url(Definition.last)
+    assert_redirected_to definitions_url
   end
 
   test "should show definition" do
@@ -35,7 +35,7 @@ class DefinitionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update definition" do
     patch definition_url(@definition), params: { definition: { comments: @definition.comments, meaning: @definition.meaning, sample: @definition.sample, word: @definition.word } }
-    assert_redirected_to definition_url(@definition)
+    assert_redirected_to definitions_url
   end
 
   test "should destroy definition" do

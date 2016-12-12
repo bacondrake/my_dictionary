@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  word: MyText
-  meaning: MyText
-  sample: MyText
-  comments: MyText
+peremptory:
+  word: Peremptory
+  meaning: Insisting on immediate attention or obedience, especially in a brusquely imperious way
+  sample: \'Just do it!\' came the peremptory reply
+  comments: adjective
 
-two:
-  word: MyText
-  meaning: MyText
-  sample: MyText
-  comments: MyText
+turbid:
+  word: Turbid
+  meaning: Confused or obscure in meaning or effect
+  sample: A turbid piece of cinema verite
+  comments: adjective, can also be used to describe a liquid
